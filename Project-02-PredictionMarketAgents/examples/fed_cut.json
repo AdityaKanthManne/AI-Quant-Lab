@@ -1,0 +1,12 @@
+{
+  "question": "Will the Federal Reserve cut the target rate at its next scheduled meeting?",
+  "description": "Resolves Yes if the upper bound of the target range is lower after the meeting.",
+  "category": "macro",
+  "resolution_criteria": "Official FOMC statement",
+  "market": "polymarket",
+  "market_event_id": "REPLACE_WITH_POLYMARKET_MARKET_ID",
+  "features": {
+    "base_rate": 0.35
+  }
+}
+

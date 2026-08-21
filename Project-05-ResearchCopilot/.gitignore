@@ -1,0 +1,11 @@
+.env
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.pyc
+research_projects/*
+!research_projects/.gitkeep
+mlruns/
+.coverage
+

@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/AI-Quant-Lab.iml" filepath="$PROJECT_DIR$/.idea/AI-Quant-Lab.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/autonomous-quant-research-copilot.iml" filepath="$PROJECT_DIR$/.idea/autonomous-quant-research-copilot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/prediction-market-agents.iml" filepath="$PROJECT_DIR$/.idea/prediction-market-agents.iml" />
     </modules>
   </component>
 </project>

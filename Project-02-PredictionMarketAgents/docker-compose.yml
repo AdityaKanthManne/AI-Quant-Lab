@@ -1,0 +1,33 @@
+services:
+  api:
+    build: .
+    env_file: [.env]
+    ports: ["8000:8000"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes: ["./data:/app/data"]
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: forecast
+      POSTGRES_PASSWORD: forecast
+      POSTGRES_DB: forecast
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U forecast"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    ports: ["5432:5432"]
+    volumes: ["postgres_data:/var/lib/postgresql/data"]
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v3.1.4
+    command: mlflow server --host 0.0.0.0 --port 5000
+    ports: ["5000:5000"]
+    volumes: ["./mlruns:/mlruns"]
+
+volumes:
+  postgres_data:
+
