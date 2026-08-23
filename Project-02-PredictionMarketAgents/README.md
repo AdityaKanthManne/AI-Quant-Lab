@@ -220,4 +220,4 @@ Start with [`docs/TEACHING.md`](docs/TEACHING.md). It explains odds-form Bayes, 
 
 ## Responsible use
 
-This software is for forecasting research. Probabilities are uncertain estimates, connectors may fail, and markets can resolve unexpectedly. The API intentionally provides no automatic trade recommendation or order execution.
+This software is for forecasting research. Probabilities are uncertain estimates, connectors may fail, and markets can resolve unexpectedly. The API intentionally provides no automatic trade recommendation or order execution. 

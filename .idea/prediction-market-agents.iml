@@ -2,9 +2,10 @@
 <module external.system.id="pyproject.toml" type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$/Project-02-PredictionMarketAgents">
-      <sourceFolder url="file://$MODULE_DIR$/Project-02-PredictionMarketAgents/src" />
+      <sourceFolder url="file://$MODULE_DIR$/Project-02-PredictionMarketAgents/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/Project-02-PredictionMarketAgents/.venv" />
     </content>
+    <orderEntry type="jdk" jdkName="~/Downloads/Github/AI-Quant-Lab/Project-02-PredictionMarketAgents/.venv" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
