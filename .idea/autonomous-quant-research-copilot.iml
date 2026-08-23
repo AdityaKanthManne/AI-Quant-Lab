@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Project-05-ResearchCopilot/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/Project-05-ResearchCopilot/.venv" />
     </content>
+    <orderEntry type="jdk" jdkName="~/Downloads/Github/AI-Quant-Lab/Project-05-ResearchCopilot/.venv" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

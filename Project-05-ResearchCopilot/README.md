@@ -9,7 +9,7 @@ research report. It is infrastructure for research—not a paper summarizer and 
 Quantitative research fails quietly when sources cannot be verified, time splits leak future information,
 experiments are overwritten, or model accuracy is presented as scientific evidence. This platform makes
 those failure modes explicit. Every project retains its question, sources, hypotheses, specifications,
-code, environment, logs, results, criticism, and report.
+code, environment, logs, results, criticism, and report. 
 
 ## Architecture
 
