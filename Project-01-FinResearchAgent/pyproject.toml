@@ -1,0 +1,59 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "fin-research-agent"
+version = "0.1.0"
+description = "Evidence-first autonomous research for US-listed equities"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "duckdb>=1.1,<2",
+  "fastapi>=0.115,<1",
+  "httpx>=0.27,<1",
+  "langgraph>=0.2,<1",
+  "polars>=1.12,<2",
+  "pydantic-settings>=2.6,<3",
+  "pydantic>=2.9,<3",
+  "sqlalchemy[asyncio]>=2.0,<3",
+  "uvicorn[standard]>=0.32,<1",
+]
+
+[project.optional-dependencies]
+live = [
+  "asyncpg>=0.30,<1",
+  "qdrant-client>=1.12,<2",
+  "yfinance>=0.2.50,<1",
+]
+dev = [
+  "mypy>=1.13,<2",
+  "pytest-asyncio>=0.24,<1",
+  "pytest-cov>=6,<7",
+  "pytest>=8.3,<9",
+  "ruff>=0.8,<1",
+]
+
+[project.scripts]
+fin-research = "fin_research.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/fin_research"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+packages = ["fin_research"]
+

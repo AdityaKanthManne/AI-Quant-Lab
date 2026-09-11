@@ -1,0 +1,2 @@
+"""Narrow, structured research workers."""
+

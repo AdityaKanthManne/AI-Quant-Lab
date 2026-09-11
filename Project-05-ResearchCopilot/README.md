@@ -30,7 +30,8 @@ flowchart LR
 
 The ten roles live in an inspectable LangGraph workflow. Pydantic models are contracts between roles.
 The local research directory is canonical; PostgreSQL, Qdrant, and MLflow provide indexes and operational
-views. See [the architecture decisions](docs/architecture.md).
+views. See [the architecture decisions](docs/architecture.md) and the
+[base code outline](docs/base-code-outline.md).
 
 ## Supported workflow
 
@@ -161,4 +162,3 @@ investment advice, or evidence until its sources, data, code, and statistical as
 The project demonstrates AI-agent orchestration, typed tool boundaries, retrieval infrastructure, sandboxed
 execution, experiment tracking, statistical discipline, and reproducible research engineering—skills shared
 across AI Engineering, ML Research Engineering, Quantitative Research, and prediction-market research.
-
