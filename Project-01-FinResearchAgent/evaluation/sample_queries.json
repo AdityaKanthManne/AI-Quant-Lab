@@ -1,0 +1,13 @@
+[
+  {"ticker": "AMD", "focus": "growth, data-center mix, and competitive risks"},
+  {"ticker": "NVDA", "focus": "AI demand, margins, and supply constraints"},
+  {"ticker": "META", "focus": "advertising, capex, and regulatory risk"},
+  {"ticker": "JPM", "focus": "net interest income and credit quality"},
+  {"ticker": "AAPL", "focus": "services mix and product-cycle risk"},
+  {"ticker": "MSFT", "focus": "cloud growth and AI investment returns"},
+  {"ticker": "XOM", "focus": "commodity sensitivity and capital returns"},
+  {"ticker": "WMT", "focus": "consumer health, margins, and inventory"},
+  {"ticker": "TSLA", "focus": "deliveries, pricing, and cash flow"},
+  {"ticker": "PFE", "focus": "pipeline, patent expirations, and leverage"}
+]
+

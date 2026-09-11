@@ -218,6 +218,8 @@ No empirical superiority claim is made yet. Populate this section only after a p
 
 Start with [`docs/TEACHING.md`](docs/TEACHING.md). It explains odds-form Bayes, proper scoring, calibration, correlated-agent risk, and experimental design, then quizzes you after each module. Read the corresponding code in this order: `domain.py` → `math.py` → `agents/forecasting.py` → `orchestration.py` → `storage.py` → `evaluation.py` → `api.py`.
 
+For a code-first map of every layer, interface, execution step, and extension point, use [`docs/BASE_CODE_OUTLINE.md`](docs/BASE_CODE_OUTLINE.md).
+
 ## Responsible use
 
 This software is for forecasting research. Probabilities are uncertain estimates, connectors may fail, and markets can resolve unexpectedly. The API intentionally provides no automatic trade recommendation or order execution. 

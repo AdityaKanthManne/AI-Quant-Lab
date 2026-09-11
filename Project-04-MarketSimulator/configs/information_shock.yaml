@@ -1,0 +1,11 @@
+seed: 43
+extends: baseline.yaml
+information_shock:
+  timestamp: 300
+  prior_probability: 0.40
+  posterior_probability: 0.65
+  delivery_delay_distribution: lognormal
+  delivery_delay_parameters:
+    mean: 2.0
+    sigma: 0.8
+
