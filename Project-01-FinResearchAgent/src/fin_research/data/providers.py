@@ -24,7 +24,9 @@ class ResearchDataProvider(ABC):
     async def news_events(self, ticker: str) -> tuple[list[str], list[Citation]]: ...
 
     @abstractmethod
-    async def price_history(self, ticker: str) -> list[dict[str, float | date]]: ...
+    async def price_history(
+        self, ticker: str
+    ) -> tuple[list[dict[str, float | date]], list[Citation]]: ...
 
 
 class DemoDataProvider(ResearchDataProvider):
@@ -69,7 +71,10 @@ class DemoDataProvider(ResearchDataProvider):
         citation = self._citation("demo-news", "News fixture", "https://example.com/demo-news")
         return ["A synthetic product-launch event was recorded for pipeline testing."], [citation]
 
-    async def price_history(self, ticker: str) -> list[dict[str, float | date]]:
+    async def price_history(
+        self, ticker: str
+    ) -> tuple[list[dict[str, float | date]], list[Citation]]:
+        citation = self._citation("demo-prices", "Price history", "https://example.com/demo-prices")
         start = date(2024, 1, 1)
         rows: list[dict[str, float | date]] = []
         for index in range(260):
@@ -81,7 +86,7 @@ class DemoDataProvider(ResearchDataProvider):
                     "volume": float(1_000_000 + (index % 20) * 25_000),
                 }
             )
-        return rows
+        return rows, [citation]
 
 
 class LiveDataProvider(ResearchDataProvider):
@@ -101,5 +106,7 @@ class LiveDataProvider(ResearchDataProvider):
     async def news_events(self, ticker: str) -> tuple[list[str], list[Citation]]:
         raise NotImplementedError(self._message)
 
-    async def price_history(self, ticker: str) -> list[dict[str, float | date]]:
+    async def price_history(
+        self, ticker: str
+    ) -> tuple[list[dict[str, float | date]], list[Citation]]:
         raise NotImplementedError(self._message)

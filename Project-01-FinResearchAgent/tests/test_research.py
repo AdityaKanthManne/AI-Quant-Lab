@@ -9,6 +9,7 @@ async def test_demo_research_is_cited_and_labeled() -> None:
     assert report.ticker == "AMD"
     assert report.citations
     assert any("DEMO DATA" in warning for warning in report.warnings)
+    assert all(metric.citation_ids for metric in report.quantitative_signals.metrics)
     assert evaluate_report(report)["citation_accuracy"] == 1.0
 
 
