@@ -20,7 +20,9 @@ def risk_metrics(
     annual_return = float(np.mean(returns) * annualization)
     volatility = float(np.std(returns, ddof=1) * np.sqrt(annualization))
     downside = returns[returns < 0]
-    downside_vol = float(np.std(downside, ddof=1) * np.sqrt(annualization)) if len(downside) > 1 else 0.0
+    downside_vol = (
+        float(np.std(downside, ddof=1) * np.sqrt(annualization)) if len(downside) > 1 else 0.0
+    )
     loss_cutoff = float(np.quantile(returns, 1 - confidence))
     tail = returns[returns <= loss_cutoff]
     metrics = {
@@ -47,4 +49,3 @@ def concentration(weights: np.ndarray) -> float:
     """Herfindahl-Hirschman concentration; 1/n is diversified, 1 is concentrated."""
 
     return float(np.square(weights).sum())
-

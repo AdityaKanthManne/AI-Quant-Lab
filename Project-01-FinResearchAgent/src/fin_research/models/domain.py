@@ -1,8 +1,8 @@
 from datetime import UTC, date, datetime
 from enum import StrEnum
-from typing import Annotated, Any, Literal
+from typing import Annotated, Literal
 
-from pydantic import BaseModel, Field, HttpUrl, field_validator
+from pydantic import BaseModel, Field, HttpUrl, field_validator, model_validator
 
 
 class ClaimKind(StrEnum):
@@ -26,12 +26,11 @@ class Claim(BaseModel):
     citation_ids: list[str] = Field(default_factory=list)
     assumptions: list[str] = Field(default_factory=list)
 
-    @field_validator("citation_ids")
-    @classmethod
-    def facts_require_citations(cls, value: list[str], info: Any) -> list[str]:
-        if info.data.get("kind") == ClaimKind.FACT and not value:
+    @model_validator(mode="after")
+    def facts_require_citations(self) -> "Claim":
+        if self.kind == ClaimKind.FACT and not self.citation_ids:
             raise ValueError("fact claims require at least one citation")
-        return value
+        return self
 
 
 class Metric(BaseModel):
@@ -77,4 +76,3 @@ class ResearchReport(BaseModel):
     model_confidence: Annotated[float, Field(ge=0, le=1)]
     citations: list[Citation]
     warnings: list[str] = Field(default_factory=list)
-

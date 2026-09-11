@@ -41,4 +41,3 @@ class MomentumBlendModel(ForecastModel):
         mu = self.blend * momentum_forecast + (1 - self.blend) * historical
         covariance = np.cov(returns, rowvar=False) * 252
         return Forecast(assets, mu, covariance, signals={"mean_momentum": float(mu.mean())})
-

@@ -12,7 +12,11 @@ def validate_claim(claim: Claim, known_citation_ids: set[str]) -> list[str]:
     missing = set(claim.citation_ids) - known_citation_ids
     if missing:
         errors.append(f"Unknown citations {sorted(missing)} in claim: {claim.text}")
-    if claim.kind != ClaimKind.FACT and NUMBER_PATTERN.search(claim.text) and not claim.citation_ids:
+    if (
+        claim.kind != ClaimKind.FACT
+        and NUMBER_PATTERN.search(claim.text)
+        and not claim.citation_ids
+    ):
         errors.append(f"Untraceable numerical statement: {claim.text}")
     if claim.kind == ClaimKind.FORECAST and not claim.assumptions:
         errors.append(f"Forecast lacks assumptions: {claim.text}")
@@ -30,4 +34,3 @@ def validate_report(report: ResearchReport) -> list[str]:
     ):
         claims.extend(section.claims)
     return [error for claim in claims for error in validate_claim(claim, citation_ids)]
-

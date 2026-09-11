@@ -1,4 +1,5 @@
 from langgraph.graph import END, START, StateGraph
+from langgraph.graph.state import CompiledStateGraph
 
 from fin_research.agents.filings import SecFilingAgent
 from fin_research.agents.fundamentals import FundamentalsAgent
@@ -10,7 +11,7 @@ from fin_research.data.providers import ResearchDataProvider
 from fin_research.models.state import ResearchState
 
 
-def build_research_graph(provider: ResearchDataProvider):
+def build_research_graph(provider: ResearchDataProvider) -> CompiledStateGraph:
     fundamentals = FundamentalsAgent(provider)
     filings = SecFilingAgent(provider)
     macro = MacroAgent(provider)
@@ -51,4 +52,3 @@ def build_research_graph(provider: ResearchDataProvider):
     graph.add_node("supervisor", synthesize)
     graph.add_edge("supervisor", END)
     return graph.compile()
-

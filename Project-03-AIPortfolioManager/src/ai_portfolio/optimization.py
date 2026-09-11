@@ -40,8 +40,10 @@ def optimize(
     if method == "minimum_variance":
         objective = variance
     elif method == "maximum_sharpe":
-        objective = lambda w: -float(
-            (w @ forecast.expected_returns - risk_free_rate) / np.sqrt(max(variance(w), 1e-12))
+        objective = lambda w: (
+            -float(
+                (w @ forecast.expected_returns - risk_free_rate) / np.sqrt(max(variance(w), 1e-12))
+            )
         )
     elif method == "mean_variance":
         objective = lambda w: -(float(w @ forecast.expected_returns) - 0.5 * variance(w))
@@ -63,4 +65,3 @@ def optimize(
             (f"optimizer fallback: {result.message}",),
         )
     return Allocation(forecast.assets, _normalize(result.x), method)
-

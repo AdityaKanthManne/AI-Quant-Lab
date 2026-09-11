@@ -25,4 +25,3 @@ class SourceDocument(Base):
     source_name: Mapped[str] = mapped_column(String(100))
     source_url: Mapped[str] = mapped_column(Text)
     content_hash: Mapped[str] = mapped_column(String(64), index=True)
-

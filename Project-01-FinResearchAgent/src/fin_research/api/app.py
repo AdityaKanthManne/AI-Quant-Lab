@@ -1,5 +1,5 @@
+from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
-from typing import AsyncIterator
 
 from fastapi import FastAPI, Request
 
@@ -35,4 +35,3 @@ def create_app() -> FastAPI:
 
 
 app = create_app()
-

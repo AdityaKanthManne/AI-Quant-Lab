@@ -1,7 +1,7 @@
 from __future__ import annotations
 
+from collections.abc import Iterator, Mapping
 from contextlib import contextmanager
-from typing import Iterator, Mapping
 
 
 @contextmanager
@@ -19,4 +19,3 @@ def tracked_run(
         yield
         if metrics:
             mlflow.log_metrics(dict(metrics))
-

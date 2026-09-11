@@ -10,4 +10,3 @@ class BaseAgent(ABC):
 
     @abstractmethod
     async def run(self, ticker: str) -> AgentResult: ...
-

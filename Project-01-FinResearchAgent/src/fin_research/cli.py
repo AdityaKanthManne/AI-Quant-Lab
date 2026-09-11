@@ -1,6 +1,5 @@
 import argparse
 import asyncio
-import json
 from pathlib import Path
 
 from fin_research.config import get_settings
@@ -25,4 +24,3 @@ def main() -> None:
     parser.add_argument("--output-dir", type=Path, default=Path("reports"))
     args = parser.parse_args()
     asyncio.run(_run(args.ticker, args.output_dir))
-

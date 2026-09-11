@@ -17,4 +17,3 @@ def realized_volatility(returns: np.ndarray, annualization: int = 252) -> np.nda
 
 def correlation_matrix(returns: np.ndarray) -> np.ndarray:
     return np.corrcoef(returns, rowvar=False)
-

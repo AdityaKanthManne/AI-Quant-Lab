@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-
 DEFAULT_UNIVERSE = ("SPY", "QQQ", "TLT", "GLD", "BTC", "NVDA", "AMD", "META")
 
 
@@ -32,4 +31,3 @@ class BacktestConfig:
     transaction_cost_bps: float = 5.0
     risk_free_rate: float = 0.02
     constraints: RiskConstraints = field(default_factory=RiskConstraints)
-

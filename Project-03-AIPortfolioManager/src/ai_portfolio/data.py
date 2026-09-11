@@ -6,7 +6,6 @@ from pathlib import Path
 import duckdb
 import polars as pl
 
-
 REQUIRED_MARKET_COLUMNS = {"date", "asset", "close", "available_at"}
 
 
@@ -53,4 +52,3 @@ class DuckDBStore:
 
     def read_market_data(self) -> pl.DataFrame:
         return self.connection.sql("SELECT * FROM market_data ORDER BY date, asset").pl()
-

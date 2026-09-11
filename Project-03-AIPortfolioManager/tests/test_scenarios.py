@@ -10,4 +10,3 @@ def test_scenario_uses_probability_weighted_return_shock() -> None:
     adjusted = apply_scenarios(forecast, [scenario])
     assert np.isclose(adjusted.expected_returns[0], 0.01)
     assert adjusted.signals["scenario:event"] == 0.25
-

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import json
-from datetime import date
+from datetime import UTC, datetime
 
 import numpy as np
 
@@ -16,9 +16,9 @@ def main() -> None:
     returns = rng.normal(0.00025, 0.012, size=(504, len(DEFAULT_UNIVERSE)))
     forecast = MomentumBlendModel().fit_predict(DEFAULT_UNIVERSE, returns)
     allocation = inverse_volatility(forecast)
-    print(json.dumps(portfolio_report(date.today(), allocation, forecast, 0.0), indent=2))
+    report_date = datetime.now(UTC).date()
+    print(json.dumps(portfolio_report(report_date, allocation, forecast, 0.0), indent=2))
 
 
 if __name__ == "__main__":
     main()
-

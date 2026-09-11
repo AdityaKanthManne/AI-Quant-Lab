@@ -3,7 +3,6 @@ import numpy as np
 from ai_portfolio.domain import Forecast
 from ai_portfolio.optimization import equal_weight, inverse_volatility, optimize
 
-
 ASSETS = ("SPY", "TLT", "GLD")
 FORECAST = Forecast(
     ASSETS,
@@ -26,4 +25,3 @@ def test_allocations_sum_to_one() -> None:
 def test_inverse_volatility_favors_low_volatility_asset() -> None:
     weights = inverse_volatility(FORECAST).weights
     assert weights[1] > weights[2] > weights[0]
-

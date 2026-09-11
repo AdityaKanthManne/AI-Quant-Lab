@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-import numpy as np
-
 from .domain import Forecast, Scenario
 
 
@@ -26,4 +24,3 @@ def apply_scenarios(forecast: Forecast, scenarios: list[Scenario]) -> Forecast:
                 covariance[:, i] *= scale
 
     return Forecast(forecast.assets, mu, covariance, forecast.regime, signals)
-

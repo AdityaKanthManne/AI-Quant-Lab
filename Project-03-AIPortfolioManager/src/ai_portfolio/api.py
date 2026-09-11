@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import date
+from datetime import UTC, datetime
 
 import numpy as np
 from fastapi import FastAPI
@@ -28,5 +28,4 @@ def demo_report(seed: int = 7) -> dict[str, object]:
     returns = rng.normal(0.0003, 0.012, size=(504, len(DEFAULT_UNIVERSE)))
     forecast = HistoricalMeanModel().fit_predict(DEFAULT_UNIVERSE, returns)
     allocation = inverse_volatility(forecast)
-    return portfolio_report(date.today(), allocation, forecast, cvar=0.0)
-
+    return portfolio_report(datetime.now(UTC).date(), allocation, forecast, cvar=0.0)

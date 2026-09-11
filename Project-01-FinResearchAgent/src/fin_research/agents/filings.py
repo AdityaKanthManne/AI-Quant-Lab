@@ -8,7 +8,8 @@ class SecFilingAgent(BaseAgent):
         citation_ids = [citation.id for citation in citations]
         return AgentResult(
             summary=f"Recent 10-K, 10-Q, and 8-K disclosures reviewed for {ticker}.",
-            claims=[Claim(text=fact, kind=ClaimKind.FACT, citation_ids=citation_ids) for fact in facts],
+            claims=[
+                Claim(text=fact, kind=ClaimKind.FACT, citation_ids=citation_ids) for fact in facts
+            ],
             citations=citations,
         )
-

@@ -29,4 +29,3 @@ def evaluate_report(report: ResearchReport) -> dict[str, float]:
         "response_completeness": completeness,
         "hallucination_rate": hallucination_rate,
     }
-

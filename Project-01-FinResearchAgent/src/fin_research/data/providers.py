@@ -1,7 +1,11 @@
 from abc import ABC, abstractmethod
 from datetime import date, timedelta
 
+from pydantic import HttpUrl, TypeAdapter
+
 from fin_research.models.domain import Citation, Metric
+
+HTTP_URL_ADAPTER = TypeAdapter(HttpUrl)
 
 
 class ResearchDataProvider(ABC):
@@ -30,7 +34,7 @@ class DemoDataProvider(ResearchDataProvider):
         return Citation(
             id=identifier,
             source_name=f"DEMO: {name}",
-            source_url=url,
+            source_url=HTTP_URL_ADAPTER.validate_python(url),
             document_date=date(2025, 1, 1),
             excerpt="Synthetic fixture used to exercise the research pipeline.",
         )
@@ -40,14 +44,18 @@ class DemoDataProvider(ResearchDataProvider):
         metrics = [
             Metric(name="revenue_growth_yoy", value=0.12, unit="ratio", citation_ids=[citation.id]),
             Metric(name="gross_margin", value=0.48, unit="ratio", citation_ids=[citation.id]),
-            Metric(name="free_cash_flow", value=1_250_000_000, unit="USD", citation_ids=[citation.id]),
+            Metric(
+                name="free_cash_flow", value=1_250_000_000, unit="USD", citation_ids=[citation.id]
+            ),
             Metric(name="debt_to_equity", value=0.31, unit="ratio", citation_ids=[citation.id]),
         ]
         return metrics, [citation]
 
     async def filing_facts(self, ticker: str) -> tuple[list[str], list[Citation]]:
         citation = self._citation("demo-sec", "SEC filing", "https://www.sec.gov/edgar/search/")
-        return ["The synthetic filing fixture identifies supply concentration as a risk."], [citation]
+        return ["The synthetic filing fixture identifies supply concentration as a risk."], [
+            citation
+        ]
 
     async def macro_metrics(self) -> tuple[list[Metric], list[Citation]]:
         citation = self._citation("demo-fred", "FRED", "https://fred.stlouisfed.org/")
@@ -95,4 +103,3 @@ class LiveDataProvider(ResearchDataProvider):
 
     async def price_history(self, ticker: str) -> list[dict[str, float | date]]:
         raise NotImplementedError(self._message)
-

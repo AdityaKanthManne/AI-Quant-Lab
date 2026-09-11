@@ -8,7 +8,9 @@ class NewsSentimentAgent(BaseAgent):
         citation_ids = [citation.id for citation in citations]
         return AgentResult(
             summary=f"Recent factual events separated from commentary for {ticker}.",
-            claims=[Claim(text=event, kind=ClaimKind.FACT, citation_ids=citation_ids) for event in events],
+            claims=[
+                Claim(text=event, kind=ClaimKind.FACT, citation_ids=citation_ids)
+                for event in events
+            ],
             citations=citations,
         )
-

@@ -17,4 +17,3 @@ class FundamentalsAgent(BaseAgent):
             ],
             citations=citations,
         )
-

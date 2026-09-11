@@ -23,11 +23,15 @@ def calculate_signals(rows: list[dict[str, float | date]]) -> dict[str, float | 
     )
     latest = frame.tail(1).to_dicts()[0]
     closes = frame["close"]
+    latest_close = float(latest["close"])
+    latest_sma = float(latest["sma_20"])
+    latest_volume_ratio = float(latest["volume_ratio"])
+    first_close = float(closes[-21])
+    last_close = float(closes[-1])
     return {
-        "return_20d": float(closes[-1] / closes[-21] - 1),
+        "return_20d": last_close / first_close - 1,
         "volatility_daily": float(frame["return"].std()),
-        "price_vs_sma_20": float(latest["close"] / latest["sma_20"] - 1),
+        "price_vs_sma_20": latest_close / latest_sma - 1,
         "max_drawdown": float(frame["drawdown"].min()),
-        "volume_ratio_20d": float(latest["volume_ratio"]),
+        "volume_ratio_20d": latest_volume_ratio,
     }
-

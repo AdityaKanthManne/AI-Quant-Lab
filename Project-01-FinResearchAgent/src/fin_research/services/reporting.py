@@ -2,7 +2,9 @@ from fin_research.models.domain import AgentResult, Claim, Metric, ResearchRepor
 
 
 def _metrics(metrics: list[Metric]) -> list[str]:
-    return [f"- {metric.name}: {metric.value} {metric.unit}" for metric in metrics] or ["- Unavailable"]
+    return [f"- {metric.name}: {metric.value} {metric.unit}" for metric in metrics] or [
+        "- Unavailable"
+    ]
 
 
 def _claims(claims: list[Claim]) -> list[str]:
@@ -13,7 +15,15 @@ def _claims(claims: list[Claim]) -> list[str]:
 
 
 def _agent_section(title: str, result: AgentResult) -> list[str]:
-    return [f"## {title}", "", result.summary, "", *_metrics(result.metrics), *_claims(result.claims), ""]
+    return [
+        f"## {title}",
+        "",
+        result.summary,
+        "",
+        *_metrics(result.metrics),
+        *_claims(result.claims),
+        "",
+    ]
 
 
 def render_markdown(report: ResearchReport) -> str:
@@ -55,10 +65,12 @@ def render_markdown(report: ResearchReport) -> str:
         "",
         "## Sources",
         "",
-        *[f"- [{citation.id}] [{citation.source_name}]({citation.source_url})" for citation in report.citations],
+        *[
+            f"- [{citation.id}] [{citation.source_name}]({citation.source_url})"
+            for citation in report.citations
+        ],
         "",
     ]
     if report.warnings:
         lines.extend(["## Warnings", "", *[f"- {warning}" for warning in report.warnings], ""])
     return "\n".join(lines)
-

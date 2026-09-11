@@ -29,4 +29,3 @@ def test_prices_to_returns_rejects_nonpositive_prices() -> None:
     )
     with pytest.raises(ValueError, match="positive"):
         prices_to_returns(frame)
-

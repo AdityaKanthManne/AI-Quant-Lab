@@ -26,4 +26,3 @@ def portfolio_report(
         "top_signals": dict(forecast.signals),
         "risk_warnings": list(allocation.warnings),
     }
-

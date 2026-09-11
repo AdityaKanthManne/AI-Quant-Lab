@@ -1,4 +1,4 @@
-from fin_research.models.domain import AgentResult, Claim, ClaimKind, ResearchReport
+from fin_research.models.domain import AgentResult, Citation, Claim, ClaimKind, ResearchReport
 from fin_research.models.state import ResearchState
 
 
@@ -18,7 +18,9 @@ class SupervisorAgent:
         warnings = [warning for section in sections for warning in section.warnings]
         is_demo = any(citation.source_name.startswith("DEMO:") for citation in citations)
         if is_demo:
-            warnings.insert(0, "DEMO DATA: output is synthetic and must not be used for investment decisions.")
+            warnings.insert(
+                0, "DEMO DATA: output is synthetic and must not be used for investment decisions."
+            )
 
         available = sum(section.status != "unavailable" for section in sections)
         confidence = round(available / len(sections) * (0.55 if is_demo else 0.9), 2)
@@ -60,9 +62,8 @@ class SupervisorAgent:
         )
 
     @staticmethod
-    def _unique_citations(sections: list[AgentResult]):
+    def _unique_citations(sections: list[AgentResult]) -> list[Citation]:
         citations = {}
         for section in sections:
             citations.update({citation.id: citation for citation in section.citations})
         return list(citations.values())
-

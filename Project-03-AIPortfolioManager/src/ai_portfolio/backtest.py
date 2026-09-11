@@ -82,4 +82,3 @@ class WalkForwardBacktester:
             exposure_concentration=concentration(previous),
         )
         return BacktestResult(live, weights[self.config.lookback_days :], metrics)
-
