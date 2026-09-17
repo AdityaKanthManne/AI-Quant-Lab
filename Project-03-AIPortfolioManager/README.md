@@ -137,6 +137,11 @@ estimates. Backtest success is research evidence—not evidence of future profit
 
 ## Learning map
 
+The guided curriculum, prerequisite graph, research milestones, backtesting protocol, and
+interview outcomes are in [`docs/LEARNING_PATH.md`](docs/LEARNING_PATH.md). Begin the hands-on
+sequence with [`docs/MODULE_01_RETURNS.md`](docs/MODULE_01_RETURNS.md); it includes manual
+calculations, NumPy exercises, edge cases, and answer checks.
+
 Read the implementation in this order:
 
 1. `domain.py` defines the research vocabulary and timestamp contract.
@@ -145,4 +150,3 @@ Read the implementation in this order:
 4. `optimization.py` converts forecasts into weights.
 5. `backtest.py` ensures those weights earn only future returns and charges costs.
 6. `risk.py` evaluates whether the result was worth taking.
-
